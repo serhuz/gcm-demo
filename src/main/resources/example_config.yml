@@ -1,0 +1,30 @@
+# Change this value to proper API key obtained from Google Developer Console
+apiKey: s00p3r_s3cr3t_stuff
+
+swagger:
+  title: "GCM Demo API"
+  version: "1.0-SNAPSHOT"
+  resourcePackage: "com.example.gcm.api"
+
+# Database settings.
+database:
+  driverClass: org.h2.Driver
+  user: sa
+  password: sa
+  url: jdbc:h2:./target/example
+  properties:
+    hibernate.hbm2ddl.auto: create-drop
+    hibernate.show_sql: true
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 10000
+  adminConnectors:
+    - type: http
+      port: 10001
+
+logging:
+  level: INFO
+  appenders:
+      - type: console

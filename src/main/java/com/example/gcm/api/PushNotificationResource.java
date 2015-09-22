@@ -42,6 +42,11 @@ import javax.ws.rs.core.MediaType;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * GCM API resource.
+ * <p>
+ * Contains methods responsible for sending downstream messages.
+ */
 @Api("GCM API")
 @Path("/send")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -55,6 +60,13 @@ public class PushNotificationResource {
     private String gcmKey;
     private ObjectMapper mapper;
 
+    /**
+     * Creates this API resource instace.
+     *
+     * @param dao    Hibernate DAO instance
+     * @param client Configured Jersey Client
+     * @param gcmKey GCM authorization key
+     */
     public PushNotificationResource(AppIdDAO dao, Client client, String gcmKey) {
         this.dao = dao;
         this.client = client;
@@ -63,12 +75,19 @@ public class PushNotificationResource {
         mapper = new ObjectMapper();
     }
 
+    /**
+     * Sends downstream notification to registered devices.
+     *
+     * @param dryRun  Specifies whether downstream message will actually be sent to devices
+     * @param request Downstream message details
+     * @return Information about sent message.
+     */
     @ApiOperation(value = "Send notification downstream message", response = NotificationSendResponse.class)
     @POST
     @Path("/notification")
     @UnitOfWork
     public NotificationSendResponse sendPushNotification(@QueryParam("dryRun") @ApiParam(required = true) boolean dryRun,
-                                                       @ApiParam(required = true) @Valid NotificationRequest request) {
+                                                         @ApiParam(required = true) @Valid NotificationRequest request) {
 
         List<AppId> ids = dao.findAll();
         List<String> registrationIds = new LinkedList<>();

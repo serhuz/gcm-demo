@@ -22,6 +22,9 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * Hibernate entity class.
+ */
 @ApiModel
 @Entity
 @Table(name = "ids")
@@ -33,18 +36,33 @@ import java.util.Objects;
 })
 public class AppId {
 
+    /**
+     * ID field.
+     */
     @ApiModelProperty(dataType = "long")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    /**
+     * Application ID assigned by GCM.
+     */
     @ApiModelProperty(example = "ABC")
     @Column(name = "appId", nullable = false)
     private String appId;
 
+    /**
+     * Default constructor.
+     */
     public AppId() {
     }
 
+    /**
+     * Creates entity with {@code id} & {@code appId} fields.
+     *
+     * @param id    ID
+     * @param appId Application ID
+     */
     public AppId(long id, String appId) {
         this.id = id;
         this.appId = appId;

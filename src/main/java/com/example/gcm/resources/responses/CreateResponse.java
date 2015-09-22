@@ -20,10 +20,21 @@ import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Server response model.
+ */
 public class CreateResponse {
 
+    /**
+     * ID of entry in DB
+     */
     private long id;
 
+    /**
+     * Created new instance.
+     *
+     * @param id {@inheritDoc}
+     */
     @JsonCreator
     public CreateResponse(@JacksonInject long id) {
         this.id = id;

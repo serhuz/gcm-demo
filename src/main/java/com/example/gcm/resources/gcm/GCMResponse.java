@@ -21,17 +21,43 @@ import io.dropwizard.jackson.JsonSnakeCase;
 
 import java.util.List;
 
+/**
+ * GCM response model.
+ */
 @JsonSnakeCase
 @SuppressWarnings("unused")
 public class GCMResponse {
 
+    /**
+     * Message ID
+     */
     private String multicastId;
+
+    /**
+     * Number of successfully sent messages
+     */
     private Integer success;
+
+    /**
+     * Number of undelivered messages
+     */
     private Integer failure;
+
+    /**
+     * Used for compatibility purposes
+     */
     private Integer canonicalIds;
+
+    /**
+     * List of detailed delivery descriptions
+     */
     private List<GCMPushResult> results;
 
+    /**
+     * Default constructor.
+     */
     public GCMResponse() {
+        // Jackson nop
     }
 
     @JsonProperty

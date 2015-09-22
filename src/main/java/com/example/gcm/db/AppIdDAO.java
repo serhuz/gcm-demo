@@ -21,20 +21,41 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
+/**
+ * A Hibernate DAO class.
+ * <p>
+ * Incapsulates specific CRUD features.
+ */
 public class AppIdDAO extends AbstractDAO<AppId> {
 
     public AppIdDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
 
+    /**
+     * Either saves or updates given entity instance.
+     *
+     * @param appId Entity
+     * @return assigned ID
+     */
     public long create(AppId appId) {
         return persist(appId).getId();
     }
 
+    /**
+     * Retrieves a list of persisted application IDs assigned by GCM.
+     *
+     * @return list of {@link AppId} instances
+     */
     public List<AppId> findAll() {
         return list(namedQuery("com.example.gcm.db.AppId.findAll"));
     }
 
+    /**
+     * Removes given entity from DB.
+     *
+     * @param appId Entity
+     */
     public void remove(AppId appId) {
         currentSession().delete(appId);
     }

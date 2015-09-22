@@ -41,6 +41,11 @@ import java.util.Properties;
 
 /**
  * Main application class.
+ *
+ * {@link GCMDemo#initialize(Bootstrap)} method is used to initialize bundles and pass them to bootstrap.
+ *
+ * {@link GCMDemo#run(GCMDemoConfiguration, Environment)} method is used to register API resources, health checks
+ * and perform other necessary instantiations.
  */
 public class GCMDemo extends Application<GCMDemoConfiguration> {
 

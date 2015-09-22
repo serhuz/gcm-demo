@@ -19,24 +19,57 @@ package com.example.gcm.resources.gcm;
 import com.example.gcm.resources.NotificationRequest;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.jackson.JsonSnakeCase;
+import org.hibernate.validator.constraints.NotBlank;
 
+/**
+ * Notification downstream message model.
+ */
 @JsonSnakeCase
 public class Notification {
 
+    /**
+     * Notification title.
+     */
+    @NotBlank
     private String title;
+
+    /**
+     * Notification contents.
+     */
+    @NotBlank
     private String body;
+
+    /**
+     * Drawable resource available in Android app.
+     */
+    @NotBlank
     private String icon;
 
+    /**
+     * Default constructor.
+     */
     public Notification() {
         // Jackson nop
     }
 
+    /**
+     * Creates new instance of this class.
+     *
+     * @param title {@inheritDoc}
+     * @param body  {@inheritDoc}
+     * @param icon  {@inheritDoc}
+     */
     public Notification(String title, String body, String icon) {
         this.title = title;
         this.body = body;
         this.icon = icon;
     }
 
+    /**
+     * Creates new instance of this class using {@link NotificationRequest} instance.
+     *
+     * @param request {@link NotificationRequest} instance
+     */
     public Notification(NotificationRequest request) {
         this.title = request.getTitle();
         this.body = request.getBody();

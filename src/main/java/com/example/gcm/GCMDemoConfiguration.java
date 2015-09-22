@@ -26,18 +26,39 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Application configuration class.
+ *
+ * During launch a provided configuration file is parsed
+ * and its data gets mapped to fields defined in this class.
+ */
 public class GCMDemoConfiguration extends Configuration {
 
+    /**
+     * GCM API key.
+     * Used as an authorization token for submitting requests to Google Cloud Messaging APIs.
+     */
     @NotBlank
     private String apiKey;
 
+    /**
+     * Configuration for Swagger & Swagger UI bundle.
+     */
+    @Valid
     @NotNull
     private SwaggerBundleConfiguration swaggerBundleConfiguration;
 
+    /**
+     * Configuration for {@link io.dropwizard.client.JerseyClientBuilder}.
+     * Used to build {@link javax.ws.rs.client.Client}
+     */
     @Valid
     @NotNull
     private JerseyClientConfiguration jerseyClient = new JerseyClientConfiguration();
 
+    /**
+     * Hibernate configuration.
+     */
     @Valid
     @NotNull
     private DataSourceFactory database = new DataSourceFactory();

@@ -14,30 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.gcm.resources.gcm;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.dropwizard.jackson.JsonSnakeCase;
-
-import java.util.List;
-
 /**
- * Base implementation of a downstream message.
+ * Contains classes which implement DB CRUD features.
  */
-@JsonSnakeCase
-public class BaseDownstreamMesage {
-
-    protected List<String> registrationIds;
-
-    public BaseDownstreamMesage() {
-    }
-
-    public BaseDownstreamMesage(List<String> registrationIds) {
-        this.registrationIds = registrationIds;
-    }
-
-    @JsonProperty
-    public List<String> getRegistrationIds() {
-        return registrationIds;
-    }
-}
+package com.example.gcm.db;

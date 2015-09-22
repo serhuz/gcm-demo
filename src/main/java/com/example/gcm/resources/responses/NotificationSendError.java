@@ -20,10 +20,23 @@ import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Server response model.
+ */
 public class NotificationSendError extends NotificationSendResponse {
 
+    /**
+     * GCM error status
+     */
     private int errorStatus;
 
+    /**
+     * Creates new instance of this class.
+     *
+     * @param nSent       {@inheritDoc}
+     * @param nErrors     {@inheritDoc}
+     * @param errorStatus {@inheritDoc}
+     */
     @JsonCreator
     public NotificationSendError(@JacksonInject int nSent, @JacksonInject int nErrors, @JacksonInject int errorStatus) {
         super(nSent, nErrors);

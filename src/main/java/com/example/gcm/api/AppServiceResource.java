@@ -29,6 +29,11 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * Application API resource.
+ * <p>
+ * Contains basic GCM app server methods to register and retrieve application IDs.
+ */
 @Api("Manage Application IDs")
 @Path("/app")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -41,6 +46,12 @@ public class AppServiceResource {
         this.appIdDAO = appIdDAO;
     }
 
+    /**
+     * Registers new application ID.
+     *
+     * @param appId Entity
+     * @return ID
+     */
     @ApiOperation(value = "Register new ID", response = CreateResponse.class)
     @POST
     @Path("/add")
@@ -49,6 +60,11 @@ public class AppServiceResource {
         return new CreateResponse(appIdDAO.create(appId));
     }
 
+    /**
+     * Retrieves a list of registered application IDs.
+     *
+     * @return List of registered application IDs
+     */
     @ApiOperation(value = "List registered IDs", responseContainer = "List", response = AppId.class)
     @GET
     @Path("/list")

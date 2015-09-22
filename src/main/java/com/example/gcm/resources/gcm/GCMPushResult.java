@@ -19,15 +19,34 @@ package com.example.gcm.resources.gcm;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.jackson.JsonSnakeCase;
 
+/**
+ * Delivery details model.
+ */
 @JsonSnakeCase
 @SuppressWarnings("unused")
 public class GCMPushResult {
 
+    /**
+     * Message ID. Empty if delivery was unsuccessful.
+     */
     private String messageId;
+
+    /**
+     * New application ID. Empty if delivery was unsuccessful. Has a value if delivery was successful AND
+     * registration ID of an application needs to be updated.
+     */
     private String registrationId;
+
+    /**
+     * Contains error description if delivery was unsuccessful.
+     */
     private String error;
 
+    /**
+     * Default constructor.
+     */
     public GCMPushResult() {
+        // Jackson nop
     }
 
     @JsonProperty

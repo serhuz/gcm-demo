@@ -20,11 +20,27 @@ import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Server response model.
+ */
 public class NotificationSendResponse {
 
+    /**
+     * Number of delivered messages.
+     */
     protected int nSent;
+
+    /**
+     * Number of undelivered messages.
+     */
     protected int nErrors;
 
+    /**
+     * Creates new instance
+     *
+     * @param nSent   {@inheritDoc}
+     * @param nErrors {@inheritDoc}
+     */
     @JsonCreator
     public NotificationSendResponse(@JacksonInject int nSent, @JacksonInject int nErrors) {
         this.nSent = nSent;

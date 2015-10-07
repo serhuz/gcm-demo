@@ -1,4 +1,4 @@
-**A simple app server for sending push notifocations to Android devices. Powered by [Dropwizard](http://www.dropwizard.io/)**
+**A simple app server for sending push notifications to Android devices. Powered by [Dropwizard](http://www.dropwizard.io/)**
 
 # Build and run
 

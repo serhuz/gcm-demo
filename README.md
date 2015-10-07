@@ -1,4 +1,4 @@
-** A simple app server for sending push notofocations to Android devices. Powered by [Dropwizard](http://www.dropwizard.io/) **
+**A simple app server for sending push notofocations to Android devices. Powered by [Dropwizard](http://www.dropwizard.io/)**
 
 # Build and run
 
